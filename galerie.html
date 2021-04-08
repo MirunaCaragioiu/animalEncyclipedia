@@ -1,0 +1,276 @@
+﻿<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Animale pe cale de disparitie</title>
+	<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+
+	<script type="text/javascript" src="lib/jquery-1.9.0.min.js"></script>
+
+	
+	<script type="text/javascript" src="lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+	<script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.4"></script>
+	<link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.4" media="screen" />
+
+	<link rel="stylesheet" type="text/css" href="source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+	<script type="text/javascript" src="../source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+	<link rel="stylesheet" type="text/css" href="source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+	<script type="text/javascript" src="../source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+	<script type="text/javascript" src="source/helpers/jquery.fancybox-media.js?v=1.0.5"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			 *  Simple image gallery. Uses default settings
+			 */
+
+			$('.fancybox').fancybox();
+
+			/*
+			 *  Different effects
+			 */
+
+			// Change title type, overlay closing speed
+			$(".fancybox-effects-a").fancybox({
+				helpers: {
+					title : {
+						type : 'outside'
+					},
+					overlay : {
+						speedOut : 0
+					}
+				}
+			});
+
+			// Disable opening and closing animations, change title type
+			$(".fancybox-effects-b").fancybox({
+				openEffect  : 'none',
+				closeEffect	: 'none',
+
+				helpers : {
+					title : {
+						type : 'over'
+					}
+				}
+			});
+
+			// Set custom style, close if clicked, change title type and overlay color
+			$(".fancybox-effects-c").fancybox({
+				wrapCSS    : 'fancybox-custom',
+				closeClick : true,
+
+				openEffect : 'none',
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					overlay : {
+						css : {
+							'background' : 'rgba(238,238,238,0.85)'
+						}
+					}
+				}
+			});
+
+			// Remove padding, set opening and closing animations, close if clicked and disable overlay
+			$(".fancybox-effects-d").fancybox({
+				padding: 0,
+
+				openEffect : 'elastic',
+				openSpeed  : 175,
+
+				closeEffect : 'elastic',
+				closeSpeed  : 175,
+
+				closeClick : true,
+
+				helpers : {
+					overlay : null
+				}
+			});
+
+			/*
+			 *  Button helper. Disable animations, hide close button, change title type and content
+			 */
+
+			$('.fancybox-buttons').fancybox({
+				openEffect  : 'none',
+				closeEffect : 'none',
+
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					buttons	: {}
+				},
+
+				afterLoad : function() {
+					this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+				}
+			});
+
+
+			/*
+			 *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+			 */
+
+			$('.fancybox-thumbs').fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : {
+					thumbs : {
+						width  : 50,
+						height : 50
+					}
+				}
+			});
+
+			/*
+			 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+			*/
+			$('.fancybox-media')
+				.attr('rel', 'media-gallery')
+				.fancybox({
+					openEffect : 'none',
+					closeEffect : 'none',
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					arrows : false,
+					helpers : {
+						media : {},
+						buttons : {}
+					}
+				});
+
+			/*
+			 *  Open manually
+			 */
+
+			$("#fancybox-manual-a").click(function() {
+				$.fancybox.open('1_b.jpg');
+			});
+
+			$("#fancybox-manual-b").click(function() {
+				$.fancybox.open({
+					href : 'iframe.html',
+					type : 'iframe',
+					padding : 5
+				});
+			});
+
+			$("#fancybox-manual-c").click(function() {
+				$.fancybox.open([
+					{
+						href : '1_b.jpg',
+						title : 'My title'
+					}, {
+						href : '2_b.jpg',
+						title : '2nd title'
+					}, {
+						href : '3_b.jpg'
+					}
+				], {
+					helpers : {
+						thumbs : {
+							width: 75,
+							height: 50
+						}
+					}
+				});
+			});
+
+
+		});
+	</script>
+	<style type="text/css">
+		.fancybox-custom .fancybox-skin {
+			box-shadow: 0 0 50px #222;
+		}
+	</style>
+
+<body>
+<div align="center">
+<div id="container">
+<div id="banner">
+	<div class="menu" style="padding-top:233px;">
+		<ul>
+			<li><a href="1.html" >Prima pagina</a></li>
+			<li><a href="1.html">Animale</a>
+					<ul>
+						<li><a href="Balenaalbastra.html">Balena albastra</a></li>
+						<li><a href="Ursulpanda.html">Ursul panda</a></li>
+						<li><a href="Capraneagra.html">Capra neagra</a></li>
+						<li><a href="Jaguarul.html">Jaguarul</a></li>
+						<li><a href="Tigrulsiberian.html">Tigrul siberian</a></li>
+						<li><a href="Elefantulasiatic.html">Elefantul asiatic</a></li>
+                                                <li><a href="Urangutanul.html">Urangutanul</a></li>
+                                                <li><a href="Gorila.html">Gorila</a></li>
+                                                <li><a href="Broascatestoasamarina.html">Broasca testoasa marina</a></li>
+                                                <li><a href="Rinocerul.html">Rinocerul</a></li>
+					</ul>
+			</li>
+			<li><a href="1.html">Animale din Romania</a>
+					<ul>
+						<li><a href="Rasul.html">Rasul</a></li>
+						<li><a href="Zimbrul.html">Zimbrul</a></li>
+						<li><a href="Dihorulpatat.html">Dihorul patat</a></li>
+						<li><a href="Nurcaeuropeana.html">Nurca europeana</a></li>
+						<li><a href="Gascacugatrosu.html">Gasca cu gat rosu</a></li>
+                                                <li><a href="Morunul.html">Morunul</a></li>
+				   </ul>
+			</li>
+			<li><a href="galerie.html">Galerie</a></li>
+			<li><a href="Articole.html">Articole</a></li>
+			<li><a href="Stiatica.html">Stiati ca</a></li>
+		</ul>
+	</div>
+    <div id="continut"><div style="padding:30px 30px 30px 30px;">
+
+
+<table>
+  <tr>
+    <td><a href="imagini/ba1.jpg" class="fancybox" rel="gallery1"><img src="imagini/ba1.jpg" width="175" height="150" /></a></td>
+    <td><a href="imagini/up1.jpg" class="fancybox" rel="gallery1"><img src="imagini/up1.jpg" width="175" height="150" /></a></td>
+    <td><a href="imagini/cn1.jpg" class="fancybox" rel="gallery1"><img src="imagini/cn1.jpg" width="175" height="150" /></a></td>
+    <td><a href="imagini/j1.jpg" class="fancybox" rel="gallery1"><img src="imagini/j1.jpg" width="175" height="150" /></a></td>
+  </tr>
+  <tr>
+    <td><a href="imagini/ts1.jpg" class="fancybox" rel="gallery1"><img src="imagini/ts1.jpg" width="175" height="150" /></a></td>
+    <td><a href="imagini/ea1.jpeg" class="fancybox" rel="gallery1"><img src="imagini/ea1.jpeg" width="175" height="150" /></a></td>
+    <td><a href="imagini/u1.jpg" class="fancybox" rel="gallery1"><img src="imagini/u1.jpg" width="175" height="150" /></a></td>
+    <td><a href="imagini/g1.jpg" class="fancybox" rel="gallery1"><img src="imagini/g1.jpg" width="175" height="150" /></a></td>
+  </tr>
+  <tr>
+    <td><a href="imagini/btm1.jpg" class="fancybox" rel="gallery1"><img src="imagini/btm1.jpg" width="175" height="150" /></a></td>
+    <td><a href="imagini/r1.jpg" class="fancybox" rel="gallery1"><img src="imagini/r1.jpg" width="175" height="150" /></a></td>
+    <td><a href="imagini/ra1.jpg" class="fancybox" rel="gallery1"><img src="imagini/ra1.jpg" width="175" height="150" /></a></td>
+    <td><a href="imagini/z1.jpg" class="fancybox" rel="gallery1"><img src="imagini/z1.jpg" width="175" height="150" /></a></td>
+  </tr>  
+  <tr>
+    <td><a href="imagini/dp1.jpg" class="fancybox" rel="gallery1"><img src="imagini/dp1.jpg" width="175" height="150" /></a></td>
+    <td><a href="imagini/ne1.jpg" class="fancybox" rel="gallery1"><img src="imagini/ne1.jpg" width="175" height="150" /></a></td>
+    <td><a href="imagini/gr1.jpg" class="fancybox" rel="gallery1"><img src="imagini/gr1.jpg" width="175" height="150" /></a></td>
+    <td><a href="imagini/m1.jpg" class="fancybox" rel="gallery1"><img src="imagini/m1.jpg" width="175" height="150" /></a></td>
+  </tr>  
+
+</table>
+ <a href="1.html"><img src="imagini/home.gif" align="right" width="110" height="50"></a>
+    </div></div>
+</div></div></div>
+</body>
+</html>
